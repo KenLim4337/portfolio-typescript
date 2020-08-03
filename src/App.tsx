@@ -33,7 +33,6 @@ class App extends Component<IProps,IState> {
   }
 
   toggleDark = () => {
-    console.log("App level");
     this.setState(state => (
       {
         dark: !state.dark
@@ -45,7 +44,7 @@ class App extends Component<IProps,IState> {
       <Router>
         <div className="App">
           <div className="container">
-            <Header darkToggle={this.toggleDark}/>
+            <Header toggleDark={this.toggleDark}/>
               <main>
                 <Route exact path="/" component={Main}/>
               
