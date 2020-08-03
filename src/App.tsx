@@ -18,6 +18,7 @@ interface IProps {
 }
 
 interface IState {
+  dark:Boolean;
 }
 
 class App extends Component<IProps,IState> {
@@ -25,8 +26,18 @@ class App extends Component<IProps,IState> {
     super(props);
 
     this.state = {
-
+      dark: false
     };
+
+    this.toggleDark = this.toggleDark.bind(this);
+  }
+
+  toggleDark = () => {
+    console.log("App level");
+    this.setState(state => (
+      {
+        dark: !state.dark
+      }));
   }
 
   render() {
@@ -34,7 +45,7 @@ class App extends Component<IProps,IState> {
       <Router>
         <div className="App">
           <div className="container">
-            <Header />
+            <Header darkToggle={this.toggleDark}/>
               <main>
                 <Route exact path="/" component={Main}/>
               
