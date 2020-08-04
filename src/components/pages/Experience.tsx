@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function () {
     return (
-        <div className="container">
+        <div className="wrapper">
             experience page
         </div>
     )

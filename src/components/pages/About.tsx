@@ -3,9 +3,11 @@ import React from 'react'
 export default function About() {
     return (
         <React.Fragment>
-            <article>
-                <h1>About Me</h1>
-            </article>
+            <div className="wrapper">
+                <article>
+                    <h1>About Me</h1>
+                </article>
+            </div>
         </React.Fragment>
     )
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import logo from './logo.svg';
 import './App.css';
@@ -30,13 +30,26 @@ class App extends Component<IProps,IState> {
     };
 
     this.toggleDark = this.toggleDark.bind(this);
+    this.applyDark = this.applyDark.bind(this);
   }
 
   toggleDark = () => {
     this.setState(state => (
       {
         dark: !state.dark
-      }));
+      }), this.applyDark);
+  }
+
+  applyDark = () => {
+    if(this.state.dark) {
+      document.querySelector('body')?.classList.add('dark');
+    } else {
+      document.querySelector('body')?.classList.remove('dark');
+    }
+  }
+
+  componentDidMount() {
+    this.applyDark();
   }
 
   render() {
@@ -44,15 +57,17 @@ class App extends Component<IProps,IState> {
       <Router>
         <div className="App">
           <div className="container">
-            <Header toggleDark={this.toggleDark}/>
+            <Header toggleDark={this.toggleDark} darkState={this.state.dark}/>
               <main>
-                <Route exact path="/" component={Main}/>
-              
-                <Route path="/about" component={About}/>
+                <Switch>
+                  <Route exact path="/" component={Main}/>
                 
-                <Route path="/experience" component={Experience}/>
-                
-                <Route path="/projects" component={Projects}/>
+                  <Route path="/about" component={About}/>
+                  
+                  <Route path="/experience" component={Experience}/>
+                  
+                  <Route path="/projects" component={Projects}/>
+                </Switch>
               </main>
             <Footer />
           </div>

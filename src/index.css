@@ -6,8 +6,42 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.4;
+  background-color: #7294C1;
+  color: #121212;
+  -webkit-transition: 0.5s ease background-color;
+  transition: 0.5s ease background-color;
+}
+
+body .App {
+  /*background: white;*/
+  -webkit-transition: 0.2s ease background-color;
+  transition: 0.2s ease background-color;
+  margin: auto;
+}
+
+body.dark {
+  background-color: #0C1134;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+body.dark .App {
+  /*background: $dark-grey;*/
+}
+
+body.dark footer .links svg {
+  fill: rgba(255, 255, 255, 0.87);
+}
+
+body footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+}
+
+body footer .links a {
+  margin: 0 10px;
 }
 
 a {

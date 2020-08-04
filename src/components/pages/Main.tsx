@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export class Main extends Component {
     render() {
         return (
-            <div className="container">
+            <div className="wrapper">
                 {/*About Me/Skills 
                     Brief 1 para description
                     Skills summary. Key skills only.

@@ -1,15 +1,63 @@
+$light-indigo: #7294C1;
+$dark-indigo: #0C1134;
+$dark-grey: #121212;
+
+$font-dark: rgba(255,255,255,0.87);
+$font-mid-dark: rgba(255,255,255,0.6);
+$font-light-dark: rgba(255,255,255,0.38);
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
-  
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.4; 
+
+body {
+  background-color: $light-indigo;
+  color: $dark-grey;
+  transition: 0.5s ease background-color;
+
+  .App {
+    /*background: white;*/
+    transition: 0.2s ease background-color;
+    margin: auto;
   }
 
-  a {
-    text-decoration: none;
+  &.dark {
+    background-color: $dark-indigo;
+    color: $font-dark;
+    
+    .App {
+      /*background: $dark-grey;*/
+    }
+
+    footer {
+      .links {
+        svg {
+          fill: $font-dark;
+        }
+      }
+    }
   }
+
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+
+    .links {
+      a {
+        margin: 0 10px;
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
     
