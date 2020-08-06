@@ -1,5 +1,5 @@
 /*Other*/
-$light-indigo: #7294C1;
+$light-indigo: #90ACCB;
 $dark-indigo: #0C1134;
 $dark-grey: #121212;
 $blossom: #ffb7c5;
@@ -11,32 +11,52 @@ $font-light-dark: rgba(255,255,255,0.38);
 $blossom-translucent: rgba(255, 183, 197, 0.87);
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Noto Sans SC', sans-serif;
-    /*font-family: 'Noto Serif', serif;npm*/
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
 
 body {
   background-color: $light-indigo;
   color: $dark-grey;
   transition: 0.5s ease background-color;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: $dark-grey;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  /*font-family: 'Noto Serif', serif;npm*/
+
+  a {
+    text-decoration: none;
+    color: $dark-indigo
+  }
 
   .background {
-    .topLeft {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 40vw;
+    pointer-events: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
 
-      svg {
-        fill: none;
-        stroke: $font-dark;
-        stroke-width: 2px;
-        stroke-dasharray: 15 5;
-        /*stroke-dashoffset: 50; 0 - 100 range */
-      }
+    .topLeft {
+      position: absolute;
+      max-width: 500px;
+      width: 40%;
+      pointer-events: none;
+      left: 0;
+      top: 0;
+    }
+
+    svg {
+      fill: none;
+      stroke: $font-dark;
+      stroke-width: 2px;
+      stroke-dasharray: 15 5;
+      /*stroke-dashoffset: 50; 0 - 100 range */
+      transition: 0.6s ease all;
     }
   }
 
@@ -44,19 +64,273 @@ body {
     /*background: white;*/
     transition: 0.2s ease background-color;
     margin: auto;
+    
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      
+      .headWrap {
+        width: 100%;
+        max-width: 768px;
+        padding: 15px;
+        margin: auto;
+        position: relative;
+
+        .logo {
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+          top: 25px;
+          width: 75px;
+          height: 75px;
+    
+          svg {
+            width: 75px;
+            height: 75px;
+            polygon {
+              transition: 0.6s ease all;
+            }
+          }
+        }
+    
+        .links {
+          padding-top: 95px;
+          
+          a {
+            display: inline-block;
+            text-transform: uppercase;
+            padding: 15px 20px;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            color: $dark-grey;
+            letter-spacing: 2px;
+            position: relative;
+            transition: 0.4s ease all;
+
+            &:after {
+              content: '';
+              position: absolute;
+              bottom: 0px;
+              left: 0;
+              right: 0;
+              margin: auto;
+              width: 10px;
+              height: 10px;
+              border-left: 2px solid $dark-grey;
+              border-bottom: 2px solid $dark-grey;
+              transform: rotate(-45deg);
+              transition: 0.3s ease all;
+            }
+            
+            &:hover:after {
+              bottom: -10px;
+            }
+
+            &.active {
+              color: $font-dark;
+              
+              &:after {
+                border-left: 2px solid $font-dark;
+                border-bottom: 2px solid $font-dark;
+                bottom: -5px;
+              }
+            }
+          }
+        }
+    
+        .socLinks {
+          width: 135px;
+          position: absolute;
+          top: 15px;
+          right: 5px;
+          
+          a {
+            margin: 0 10px;
+            
+            &:last-of-type {
+              margin-right: 0;
+            }
+          }
+
+          svg {
+            fill: $dark-grey;
+          }
+        }
+
+        .darkWrap {
+          width: 135px;
+          position: absolute;
+          top: 15px;
+          left: 5px;
+          display: flex;
+          align-items: center;
+
+          i {
+            svg {
+              vertical-align: middle;
+              fill: $dark-indigo;
+            }
+
+            &.darkIcon svg {
+              fill: $font-dark;
+            }
+          }
+
+          .modeToggle {  
+            width: 42px;
+            height: 26px;
+            border-radius: 13px;
+            margin: 0 10px;
+            border: none;
+            background: $dark-indigo;
+            cursor: pointer;
+
+            .toggleInner {
+              position: relative;
+              margin: 3px;
+              width: 38px;
+              height: 20px;
+  
+              .toggleCircle {
+                position: absolute;
+                left: 0;
+                top: 0;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                background: $font-dark;
+                transition: 0.4s ease all; 
+                text-align: left;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                
+                &:after {
+                  content: '';
+                  display: block;
+                  width: 8px;
+                  height: 0;
+                  border-top: 1px $dark-indigo solid;
+                  border-bottom: 1px $dark-indigo solid;
+                }
+              }
+            }
+          }
+
+          &.dark {
+              
+            i {
+              &.darkIcon svg{
+                fill: $light-indigo;
+              }
+
+              &.lightIcon svg{
+                fill: $blossom-translucent;
+              }
+            }
+
+            .modeToggle {  
+              background: $light-indigo;
+
+              .toggleInner {
+                .toggleCircle {
+                  left: calc(100% - 22px);
+                  transform: rotate(180deg);
+                  background: $blossom-translucent;
+                  &:after {
+                    border-top: 1px $light-indigo solid;
+                    border-bottom: 1px $light-indigo solid;
+                  }
+                }
+              } 
+            }
+          }
+        }
+      }
+    }
+
+    main {
+      padding-top: 180px;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      
+      .footNote {
+        font-size: 0.7rem;
+        color: $font-dark;
+        .highlight {
+          font-size: 0.9rem;
+          color: $dark-indigo; 
+        }
+      }
+    }
   }
 
   &.dark {
     background-color: $dark-indigo;
     color: $font-dark;
+    color: $font-dark;
     
-    .App {
-      /*background: $dark-grey;*/
+    a {
+      color: $blossom-translucent;
     }
 
-    .socLinks {
-      svg {
-        fill: $font-dark;
+    .App {
+      /*background: $dark-grey;*/
+
+      header {
+        .links {
+          padding-top: 95px;
+          
+          a {
+            color: $blossom-translucent;
+
+            &:after {
+              content: '';
+              margin: auto;
+              width: 0px;
+              height: 0px;
+              bottom: -2px;
+              border-top: 8px solid $blossom-translucent;
+              border-left: 9px solid transparent;
+              border-right: 9px solid transparent;
+              border-bottom: none;
+              transform: rotate(0deg);
+            }
+            
+            &.active {
+              color: $font-dark;
+              
+              &:after {
+                border-top: 8px solid $font-dark;
+                border-left: 9px solid transparent;
+                border-bottom: none;
+              }
+            }
+          }
+        }
+
+        .socLinks {
+          svg {
+            fill: $blossom-translucent;
+          }
+        }
+      }
+
+      footer {
+        .footNote {
+          color: $blossom-translucent; 
+          .highlight {
+            color: $light-indigo; 
+          }
+        }
       }
     }
     
@@ -66,16 +340,6 @@ body {
       }
     }
   }
-
-  .socLinks {
-    a {
-      margin: 0 10px;
-    }
-  }
-}
-
-a {
-  text-decoration: none;
 }
 
     

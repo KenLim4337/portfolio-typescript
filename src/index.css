@@ -5,30 +5,53 @@
           box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Noto Sans SC', sans-serif;
-  /*font-family: 'Noto Serif', serif;npm*/
+  outline: none;
 }
 
 body {
-  background-color: #7294C1;
+  background-color: #90ACCB;
   color: #121212;
   -webkit-transition: 0.5s ease background-color;
   transition: 0.5s ease background-color;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #121212;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  /*font-family: 'Noto Serif', serif;npm*/
+}
+
+body a {
+  text-decoration: none;
+  color: #0C1134;
+}
+
+body .background {
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 
 body .background .topLeft {
-  position: fixed;
-  top: 0;
+  position: absolute;
+  max-width: 500px;
+  width: 40%;
+  pointer-events: none;
   left: 0;
-  width: 40vw;
+  top: 0;
 }
 
-body .background .topLeft svg {
+body .background svg {
   fill: none;
   stroke: rgba(255, 255, 255, 0.87);
   stroke-width: 2px;
   stroke-dasharray: 15 5;
   /*stroke-dashoffset: 50; 0 - 100 range */
+  -webkit-transition: 0.6s ease all;
+  transition: 0.6s ease all;
 }
 
 body .App {
@@ -38,28 +61,282 @@ body .App {
   margin: auto;
 }
 
+body .App header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+body .App header .headWrap {
+  width: 100%;
+  max-width: 768px;
+  padding: 15px;
+  margin: auto;
+  position: relative;
+}
+
+body .App header .headWrap .logo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 25px;
+  width: 75px;
+  height: 75px;
+}
+
+body .App header .headWrap .logo svg {
+  width: 75px;
+  height: 75px;
+}
+
+body .App header .headWrap .logo svg polygon {
+  -webkit-transition: 0.6s ease all;
+  transition: 0.6s ease all;
+}
+
+body .App header .headWrap .links {
+  padding-top: 95px;
+}
+
+body .App header .headWrap .links a {
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 15px 20px;
+  margin: 0 15px;
+  font-size: 1.2rem;
+  color: #121212;
+  letter-spacing: 2px;
+  position: relative;
+  -webkit-transition: 0.4s ease all;
+  transition: 0.4s ease all;
+}
+
+body .App header .headWrap .links a:after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid #121212;
+  border-bottom: 2px solid #121212;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
+body .App header .headWrap .links a:hover:after {
+  bottom: -10px;
+}
+
+body .App header .headWrap .links a.active {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+body .App header .headWrap .links a.active:after {
+  border-left: 2px solid rgba(255, 255, 255, 0.87);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.87);
+  bottom: -5px;
+}
+
+body .App header .headWrap .socLinks {
+  width: 135px;
+  position: absolute;
+  top: 15px;
+  right: 5px;
+}
+
+body .App header .headWrap .socLinks a {
+  margin: 0 10px;
+}
+
+body .App header .headWrap .socLinks a:last-of-type {
+  margin-right: 0;
+}
+
+body .App header .headWrap .socLinks svg {
+  fill: #121212;
+}
+
+body .App header .headWrap .darkWrap {
+  width: 135px;
+  position: absolute;
+  top: 15px;
+  left: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .App header .headWrap .darkWrap i svg {
+  vertical-align: middle;
+  fill: #0C1134;
+}
+
+body .App header .headWrap .darkWrap i.darkIcon svg {
+  fill: rgba(255, 255, 255, 0.87);
+}
+
+body .App header .headWrap .darkWrap .modeToggle {
+  width: 42px;
+  height: 26px;
+  border-radius: 13px;
+  margin: 0 10px;
+  border: none;
+  background: #0C1134;
+  cursor: pointer;
+}
+
+body .App header .headWrap .darkWrap .modeToggle .toggleInner {
+  position: relative;
+  margin: 3px;
+  width: 38px;
+  height: 20px;
+}
+
+body .App header .headWrap .darkWrap .modeToggle .toggleInner .toggleCircle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.87);
+  -webkit-transition: 0.4s ease all;
+  transition: 0.4s ease all;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .App header .headWrap .darkWrap .modeToggle .toggleInner .toggleCircle:after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 0;
+  border-top: 1px #0C1134 solid;
+  border-bottom: 1px #0C1134 solid;
+}
+
+body .App header .headWrap .darkWrap.dark i.darkIcon svg {
+  fill: #90ACCB;
+}
+
+body .App header .headWrap .darkWrap.dark i.lightIcon svg {
+  fill: rgba(255, 183, 197, 0.87);
+}
+
+body .App header .headWrap .darkWrap.dark .modeToggle {
+  background: #90ACCB;
+}
+
+body .App header .headWrap .darkWrap.dark .modeToggle .toggleInner .toggleCircle {
+  left: calc(100% - 22px);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  background: rgba(255, 183, 197, 0.87);
+}
+
+body .App header .headWrap .darkWrap.dark .modeToggle .toggleInner .toggleCircle:after {
+  border-top: 1px #90ACCB solid;
+  border-bottom: 1px #90ACCB solid;
+}
+
+body .App main {
+  padding-top: 180px;
+}
+
+body .App footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+body .App footer .footNote {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+body .App footer .footNote .highlight {
+  font-size: 0.9rem;
+  color: #0C1134;
+}
+
 body.dark {
   background-color: #0C1134;
   color: rgba(255, 255, 255, 0.87);
+  color: rgba(255, 255, 255, 0.87);
+}
+
+body.dark a {
+  color: rgba(255, 183, 197, 0.87);
 }
 
 body.dark .App {
   /*background: $dark-grey;*/
 }
 
-body.dark .socLinks svg {
-  fill: rgba(255, 255, 255, 0.87);
+body.dark .App header .links {
+  padding-top: 95px;
+}
+
+body.dark .App header .links a {
+  color: rgba(255, 183, 197, 0.87);
+}
+
+body.dark .App header .links a:after {
+  content: '';
+  margin: auto;
+  width: 0px;
+  height: 0px;
+  bottom: -2px;
+  border-top: 8px solid rgba(255, 183, 197, 0.87);
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: none;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+body.dark .App header .links a.active {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+body.dark .App header .links a.active:after {
+  border-top: 8px solid rgba(255, 255, 255, 0.87);
+  border-left: 9px solid transparent;
+  border-bottom: none;
+}
+
+body.dark .App header .socLinks svg {
+  fill: rgba(255, 183, 197, 0.87);
+}
+
+body.dark .App footer .footNote {
+  color: rgba(255, 183, 197, 0.87);
+}
+
+body.dark .App footer .footNote .highlight {
+  color: #90ACCB;
 }
 
 body.dark .background svg {
   stroke: rgba(255, 183, 197, 0.87);
-}
-
-body .socLinks a {
-  margin: 0 10px;
-}
-
-a {
-  text-decoration: none;
 }
 /*# sourceMappingURL=index.css.map */
