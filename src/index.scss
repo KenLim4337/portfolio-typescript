@@ -41,7 +41,7 @@ body {
     left: 0;
     top: 0;
 
-    .topLeft {
+    .hishi {
       position: absolute;
       max-width: 500px;
       width: 40%;
@@ -49,22 +49,35 @@ body {
       left: 0;
       top: 0;
     }
+    
+    .seigaiha {
+      position: absolute;
+      max-width: 500px;
+      width: 40%;
+      pointer-events: none;
+      right: 0;
+      bottom: 0;
+    }
 
     svg {
       fill: none;
-      stroke: $font-dark;
+      stroke: white;
       stroke-width: 2px;
       stroke-dasharray: 15 5;
       /*stroke-dashoffset: 50; 0 - 100 range */
       transition: 0.6s ease all;
     }
   }
+ 
+  .textHighlight {
+    color: white;
+  }
 
   .App {
     /*background: white;*/
     transition: 0.2s ease background-color;
     margin: auto;
-    
+
     header {
       position: fixed;
       top: 0;
@@ -130,11 +143,11 @@ body {
             }
 
             &.active {
-              color: $font-dark;
+              color: white;
               
               &:after {
-                border-left: 2px solid $font-dark;
-                border-bottom: 2px solid $font-dark;
+                border-left: 2px solid white;
+                border-bottom: 2px solid white;
                 bottom: -5px;
               }
             }
@@ -147,16 +160,23 @@ body {
           top: 15px;
           right: 5px;
           
+          svg {
+            fill: $dark-grey;
+            transition: 0.3s ease fill;
+          }
+
           a {
             margin: 0 10px;
             
             &:last-of-type {
               margin-right: 0;
             }
-          }
-
-          svg {
-            fill: $dark-grey;
+              
+            &:hover {
+              svg {
+                fill: white;
+              }
+            }
           }
         }
 
@@ -172,10 +192,19 @@ body {
             svg {
               vertical-align: middle;
               fill: $dark-indigo;
+              transition: 0.4s ease fill;
             }
 
             &.darkIcon svg {
-              fill: $font-dark;
+              fill: white;
+            }
+          }
+
+          &:hover {
+            i {
+              &.lightIcon svg {
+                fill: $blossom;
+              }
             }
           }
 
@@ -201,7 +230,7 @@ body {
                 border-radius: 50%;
                 width: 20px;
                 height: 20px;
-                background: $font-dark;
+                background: white;
                 transition: 0.4s ease all; 
                 text-align: left;
                 display: flex;
@@ -229,6 +258,14 @@ body {
 
               &.lightIcon svg{
                 fill: $blossom-translucent;
+              }
+            }
+
+            &:hover {
+              i {
+                &.darkIcon svg{
+                  fill: white;
+                }
               }
             }
 
@@ -282,6 +319,10 @@ body {
       color: $blossom-translucent;
     }
 
+    .textHighlight {
+      color: $blossom-translucent;
+    }
+
     .App {
       /*background: $dark-grey;*/
 
@@ -290,7 +331,7 @@ body {
           padding-top: 95px;
           
           a {
-            color: $blossom-translucent;
+            color: $font-dark;
 
             &:after {
               content: '';
@@ -298,7 +339,7 @@ body {
               width: 0px;
               height: 0px;
               bottom: -2px;
-              border-top: 8px solid $blossom-translucent;
+              border-top: 8px solid $font-dark;
               border-left: 9px solid transparent;
               border-right: 9px solid transparent;
               border-bottom: none;
@@ -306,10 +347,10 @@ body {
             }
             
             &.active {
-              color: $font-dark;
+              color: $blossom-translucent;
               
               &:after {
-                border-top: 8px solid $font-dark;
+                border-top: 8px solid $blossom-translucent;
                 border-left: 9px solid transparent;
                 border-bottom: none;
               }
@@ -319,7 +360,13 @@ body {
 
         .socLinks {
           svg {
-            fill: $blossom-translucent;
+            fill: $font-dark;
+          }
+
+          a:hover {
+            svg {
+              fill: $blossom-translucent;
+            }
           }
         }
       }
@@ -342,4 +389,34 @@ body {
   }
 }
 
-    
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.transition-group {
+  position: relative;
+}

@@ -7,10 +7,11 @@ import './App.css';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
-import Main from './components/pages/Main';
+import Home from './components/pages/Home';
 import About from './components/pages/About';
 import Experience from './components/pages/Experience';
 import Projects from './components/pages/Projects';
+import Main from './components/layout/Main';
 
 
 {/*Generic interfaces for props and state*/}
@@ -51,6 +52,7 @@ class App extends Component<IProps,IState> {
   componentDidMount() {
     this.applyDark();
   }
+  
 
   render() {
     return (
@@ -58,17 +60,7 @@ class App extends Component<IProps,IState> {
         <div className="App">
           <div className="container">
             <Header toggleDark={this.toggleDark} darkState={this.state.dark}/>
-              <main>
-                <Switch>
-                  <Route exact path="/" component={Main}/>
-                
-                  <Route path="/about" component={About}/>
-                  
-                  <Route path="/experience" component={Experience}/>
-                  
-                  <Route path="/projects" component={Projects}/>
-                </Switch>
-              </main>
+            <Main/>
             <Footer />
           </div>
         </div>

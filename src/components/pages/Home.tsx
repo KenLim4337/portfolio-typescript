@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class Main extends Component {
+export class Home extends Component {
     render() {
         return (
             <div className="wrapper">
@@ -28,9 +28,10 @@ export class Main extends Component {
                 - Spotify thing?
                 - Small react app
                 */}
+                <h1>Main</h1>
             </div>
         )
     }
 }
 
-export default Main
+export default Home

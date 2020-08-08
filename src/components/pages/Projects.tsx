@@ -3,7 +3,7 @@ import React from 'react'
 export default function Projects() {
     return (
         <div className="wrapper">
-            project page
+            <h1>Projects</h1>
         </div>
     )
 }

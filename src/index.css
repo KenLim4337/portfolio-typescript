@@ -35,7 +35,7 @@ body .background {
   top: 0;
 }
 
-body .background .topLeft {
+body .background .hishi {
   position: absolute;
   max-width: 500px;
   width: 40%;
@@ -44,14 +44,27 @@ body .background .topLeft {
   top: 0;
 }
 
+body .background .seigaiha {
+  position: absolute;
+  max-width: 500px;
+  width: 40%;
+  pointer-events: none;
+  right: 0;
+  bottom: 0;
+}
+
 body .background svg {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.87);
+  stroke: white;
   stroke-width: 2px;
   stroke-dasharray: 15 5;
   /*stroke-dashoffset: 50; 0 - 100 range */
   -webkit-transition: 0.6s ease all;
   transition: 0.6s ease all;
+}
+
+body .textHighlight {
+  color: white;
 }
 
 body .App {
@@ -135,12 +148,12 @@ body .App header .headWrap .links a:hover:after {
 }
 
 body .App header .headWrap .links a.active {
-  color: rgba(255, 255, 255, 0.87);
+  color: white;
 }
 
 body .App header .headWrap .links a.active:after {
-  border-left: 2px solid rgba(255, 255, 255, 0.87);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.87);
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
   bottom: -5px;
 }
 
@@ -151,6 +164,12 @@ body .App header .headWrap .socLinks {
   right: 5px;
 }
 
+body .App header .headWrap .socLinks svg {
+  fill: #121212;
+  -webkit-transition: 0.3s ease fill;
+  transition: 0.3s ease fill;
+}
+
 body .App header .headWrap .socLinks a {
   margin: 0 10px;
 }
@@ -159,8 +178,8 @@ body .App header .headWrap .socLinks a:last-of-type {
   margin-right: 0;
 }
 
-body .App header .headWrap .socLinks svg {
-  fill: #121212;
+body .App header .headWrap .socLinks a:hover svg {
+  fill: white;
 }
 
 body .App header .headWrap .darkWrap {
@@ -179,10 +198,16 @@ body .App header .headWrap .darkWrap {
 body .App header .headWrap .darkWrap i svg {
   vertical-align: middle;
   fill: #0C1134;
+  -webkit-transition: 0.4s ease fill;
+  transition: 0.4s ease fill;
 }
 
 body .App header .headWrap .darkWrap i.darkIcon svg {
-  fill: rgba(255, 255, 255, 0.87);
+  fill: white;
+}
+
+body .App header .headWrap .darkWrap:hover i.lightIcon svg {
+  fill: #ffb7c5;
 }
 
 body .App header .headWrap .darkWrap .modeToggle {
@@ -209,7 +234,7 @@ body .App header .headWrap .darkWrap .modeToggle .toggleInner .toggleCircle {
   border-radius: 50%;
   width: 20px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.87);
+  background: white;
   -webkit-transition: 0.4s ease all;
   transition: 0.4s ease all;
   text-align: left;
@@ -239,6 +264,10 @@ body .App header .headWrap .darkWrap.dark i.darkIcon svg {
 
 body .App header .headWrap .darkWrap.dark i.lightIcon svg {
   fill: rgba(255, 183, 197, 0.87);
+}
+
+body .App header .headWrap .darkWrap.dark:hover i.darkIcon svg {
+  fill: white;
 }
 
 body .App header .headWrap .darkWrap.dark .modeToggle {
@@ -288,6 +317,10 @@ body.dark a {
   color: rgba(255, 183, 197, 0.87);
 }
 
+body.dark .textHighlight {
+  color: rgba(255, 183, 197, 0.87);
+}
+
 body.dark .App {
   /*background: $dark-grey;*/
 }
@@ -297,7 +330,7 @@ body.dark .App header .links {
 }
 
 body.dark .App header .links a {
-  color: rgba(255, 183, 197, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 
 body.dark .App header .links a:after {
@@ -306,7 +339,7 @@ body.dark .App header .links a:after {
   width: 0px;
   height: 0px;
   bottom: -2px;
-  border-top: 8px solid rgba(255, 183, 197, 0.87);
+  border-top: 8px solid rgba(255, 255, 255, 0.87);
   border-left: 9px solid transparent;
   border-right: 9px solid transparent;
   border-bottom: none;
@@ -315,16 +348,20 @@ body.dark .App header .links a:after {
 }
 
 body.dark .App header .links a.active {
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(255, 183, 197, 0.87);
 }
 
 body.dark .App header .links a.active:after {
-  border-top: 8px solid rgba(255, 255, 255, 0.87);
+  border-top: 8px solid rgba(255, 183, 197, 0.87);
   border-left: 9px solid transparent;
   border-bottom: none;
 }
 
 body.dark .App header .socLinks svg {
+  fill: rgba(255, 255, 255, 0.87);
+}
+
+body.dark .App header .socLinks a:hover svg {
   fill: rgba(255, 183, 197, 0.87);
 }
 
@@ -338,5 +375,39 @@ body.dark .App footer .footNote .highlight {
 
 body.dark .background svg {
   stroke: rgba(255, 183, 197, 0.87);
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  -webkit-transition: opacity 300ms ease-in;
+  transition: opacity 300ms ease-in;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0.01;
+  -webkit-transition: opacity 300ms ease-in;
+  transition: opacity 300ms ease-in;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.transition-group {
+  position: relative;
 }
 /*# sourceMappingURL=index.css.map */

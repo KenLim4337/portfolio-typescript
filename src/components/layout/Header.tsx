@@ -90,17 +90,11 @@ const iconStyle = {
         4: {fill:"#939393"},
     },
     'dark': {
-        1: {fill:"#7294C1", opacity:'0.87'},
+        1: {fill:"90ACCB", opacity:'0.87'},
         2: {fill:"#939393", opacity:'0.87'},
         3: {fill:"#28459D", opacity:'0.87'},
         4: {fill:"#333333", opacity:'0.87'},
     }
-}
-
-
-const backgroundStyle = {
-    'light': {stroke:'rgba(255,255,255,0.87)'},
-    'dark': {stroke:'rgba(255, 183, 197, 0.87)'},
 }
 
 export default Header
