@@ -20,12 +20,12 @@ $blossom-translucent: rgba(255, 183, 197, 0.87);
 body {
   background-color: $light-indigo;
   color: $dark-grey;
-  transition: 0.5s ease background-color;
+  transition: 0.5s ease background-color,color;
   font-family: 'Noto Sans SC', sans-serif;
   color: $dark-grey;
   font-size: 16px;
+  line-height: 22px;
   font-weight: 400;
-  line-height: 18px;
   /*font-family: 'Noto Serif', serif;npm*/
 
   a {
@@ -33,42 +33,18 @@ body {
     color: $dark-indigo
   }
 
-  .background {
-    pointer-events: none;
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-
-    .hishi {
-      position: absolute;
-      max-width: 500px;
-      width: 40%;
-      pointer-events: none;
-      left: 0;
-      top: 0;
-    }
-    
-    .seigaiha {
-      position: absolute;
-      max-width: 500px;
-      width: 40%;
-      pointer-events: none;
-      right: 0;
-      bottom: 0;
-    }
-
-    svg {
-      fill: none;
-      stroke: white;
-      stroke-width: 2px;
-      stroke-dasharray: 15 5;
-      /*stroke-dashoffset: 50; 0 - 100 range */
-      transition: 0.6s ease all;
-    }
+  h1 {
+    font-size: 2.5rem;
+    line-height: 3.25rem;
+    margin-bottom: 10px;
   }
  
+  h2 {
+    font-size: 1.75rem;
+    line-height: 2.2rem;
+    margin-bottom: 10px;
+  }
+
   .textHighlight {
     color: white;
   }
@@ -77,6 +53,53 @@ body {
     /*background: white;*/
     transition: 0.2s ease background-color;
     margin: auto;
+
+    ::-moz-selection {
+      color: $blossom-translucent;
+      background: $dark-indigo;
+    }
+    
+    ::selection {
+      color: $blossom-translucent;
+      background: $dark-indigo;
+    }
+
+    .background {
+      pointer-events: none;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: -1;
+  
+      .hishi {
+        position: absolute;
+        max-width: 500px;
+        width: 40%;
+        pointer-events: none;
+        left: 0;
+        top: 0;
+      }
+      
+      .seigaiha {
+        position: absolute;
+        max-width: 500px;
+        width: 40%;
+        pointer-events: none;
+        right: 0;
+        bottom: 0;
+      }
+  
+      svg {
+        fill: none;
+        stroke: white;
+        stroke-width: 2px;
+        stroke-dasharray: 15 5;
+        /*stroke-dashoffset: 50; 0 - 100 range */
+        transition: 0.6s ease all;
+      }
+    }
 
     header {
       position: fixed;
@@ -144,6 +167,7 @@ body {
 
             &.active {
               color: white;
+              pointer-events: none;
               
               &:after {
                 border-left: 2px solid white;
@@ -155,10 +179,11 @@ body {
         }
     
         .socLinks {
-          width: 135px;
+          width: 170px;
           position: absolute;
           top: 15px;
           right: 5px;
+          text-align: right;
           
           svg {
             fill: $dark-grey;
@@ -181,7 +206,7 @@ body {
         }
 
         .darkWrap {
-          width: 135px;
+          width: 170px;
           position: absolute;
           top: 15px;
           left: 5px;
@@ -257,7 +282,7 @@ body {
               }
 
               &.lightIcon svg{
-                fill: $blossom-translucent;
+                fill: $blossom;
               }
             }
 
@@ -290,7 +315,41 @@ body {
     }
 
     main {
-      padding-top: 180px;
+      padding-top: 220px;
+      max-width: 1024px;
+      width: 100%;
+      margin: auto;
+
+      .transition-group {
+        position: relative;
+      }
+
+      .fade-enter {
+        transition: all 0.6s ease;
+        opacity: 0.01;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        margin: 0 auto;
+      }
+      .fade-enter.fade-enter-active {
+        opacity: 1;
+      }
+      .fade-exit {
+        transition: opacity 0.3s ease, transform 0.4s ease;
+        opacity: 1;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        margin: 0 auto;
+      }
+        
+      .fade-exit.fade-exit-active {
+        opacity: 0.01;
+        transform: scale(0.1);
+      }
     }
 
     footer {
@@ -325,6 +384,16 @@ body {
 
     .App {
       /*background: $dark-grey;*/
+
+      ::-moz-selection {
+        color: white;
+        background: $light-indigo;
+      }
+      
+      ::selection {
+        color: white;
+        background: $light-indigo;
+      }
 
       header {
         .links {
@@ -383,40 +452,8 @@ body {
     
     .background {
       svg {
-        stroke: $blossom-translucent;
+        stroke: $blossom;
       }
     }
   }
-}
-
-.fade-enter {
-  opacity: 0.01;
-}
-
-.fade-enter.fade-enter-active {
-  opacity: 1;
-  transition: opacity 300ms ease-in;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit.fade-exit-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.transition-group {
-  position: relative;
 }

@@ -1,9 +1,5 @@
 import React from 'react'
 
-{/*
-    Footer code, contains scroll-to-top button and social links.
-*/}
-
 export default function Footer() {
     return (
         <footer>

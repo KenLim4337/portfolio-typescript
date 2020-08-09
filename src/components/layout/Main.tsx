@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Switch, Route, withRouter, RouteComponentProps } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -7,32 +7,42 @@ import About from '../pages/About';
 import Experience from '../pages/Experience';
 import Projects from '../pages/Projects';
 
+interface IProps {
+    setOffSet: Function;
+}
 
 /*Convert to component*/
 
-function Main({ location }: RouteComponentProps) {
+export class Main extends Component<RouteComponentProps&IProps> {
+    componentDidUpdate(prevProps:RouteComponentProps&IProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.props.setOffSet();
+        }
+    }
 
-    return (
-        <main>
-            <TransitionGroup className="transition-group">
-                <CSSTransition
-                    key={location.key}
-                    timeout={{ enter: 300, exit: 300 }}
-                    classNames="fade"
-                >
-                    <Switch location={location}>
-                        <Route exact path="/" component={Home}/>
-                    
-                        <Route path="/about" component={About}/>
+    render() {   
+        return (
+            <main>
+                <TransitionGroup className="transition-group">
+                    <CSSTransition
+                    key={this.props.location.key}
+                    timeout={{ enter: 600, exit: 400 }}
+                    classNames={'fade'}
+                    >
+                        <Switch location={this.props.location}>
+                            <Route exact path="/" component={Home}/>
                         
-                        <Route path="/experience" component={Experience}/>
-                        
-                        <Route path="/projects" component={Projects}/>
-                    </Switch>
-                </CSSTransition>
-            </TransitionGroup>
-        </main>
-    )
+                            <Route path="/about" component={About}/>
+                            
+                            <Route path="/experience" component={Experience}/>
+                            
+                            <Route path="/projects" component={Projects}/>
+                        </Switch>
+                    </CSSTransition>
+                </TransitionGroup>
+            </main>
+        )
+    }
 }
 
 export default withRouter(Main);

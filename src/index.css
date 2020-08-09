@@ -11,13 +11,13 @@
 body {
   background-color: #90ACCB;
   color: #121212;
-  -webkit-transition: 0.5s ease background-color;
-  transition: 0.5s ease background-color;
+  -webkit-transition: 0.5s ease background-color,color;
+  transition: 0.5s ease background-color,color;
   font-family: 'Noto Sans SC', sans-serif;
   color: #121212;
   font-size: 16px;
+  line-height: 22px;
   font-weight: 400;
-  line-height: 18px;
   /*font-family: 'Noto Serif', serif;npm*/
 }
 
@@ -26,41 +26,16 @@ body a {
   color: #0C1134;
 }
 
-body .background {
-  pointer-events: none;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
+body h1 {
+  font-size: 2.5rem;
+  line-height: 3.25rem;
+  margin-bottom: 10px;
 }
 
-body .background .hishi {
-  position: absolute;
-  max-width: 500px;
-  width: 40%;
-  pointer-events: none;
-  left: 0;
-  top: 0;
-}
-
-body .background .seigaiha {
-  position: absolute;
-  max-width: 500px;
-  width: 40%;
-  pointer-events: none;
-  right: 0;
-  bottom: 0;
-}
-
-body .background svg {
-  fill: none;
-  stroke: white;
-  stroke-width: 2px;
-  stroke-dasharray: 15 5;
-  /*stroke-dashoffset: 50; 0 - 100 range */
-  -webkit-transition: 0.6s ease all;
-  transition: 0.6s ease all;
+body h2 {
+  font-size: 1.75rem;
+  line-height: 2.2rem;
+  margin-bottom: 10px;
 }
 
 body .textHighlight {
@@ -72,6 +47,54 @@ body .App {
   -webkit-transition: 0.2s ease background-color;
   transition: 0.2s ease background-color;
   margin: auto;
+}
+
+body .App ::-moz-selection {
+  color: rgba(255, 183, 197, 0.87);
+  background: #0C1134;
+}
+
+body .App ::selection {
+  color: rgba(255, 183, 197, 0.87);
+  background: #0C1134;
+}
+
+body .App .background {
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+body .App .background .hishi {
+  position: absolute;
+  max-width: 500px;
+  width: 40%;
+  pointer-events: none;
+  left: 0;
+  top: 0;
+}
+
+body .App .background .seigaiha {
+  position: absolute;
+  max-width: 500px;
+  width: 40%;
+  pointer-events: none;
+  right: 0;
+  bottom: 0;
+}
+
+body .App .background svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 2px;
+  stroke-dasharray: 15 5;
+  /*stroke-dashoffset: 50; 0 - 100 range */
+  -webkit-transition: 0.6s ease all;
+  transition: 0.6s ease all;
 }
 
 body .App header {
@@ -149,6 +172,7 @@ body .App header .headWrap .links a:hover:after {
 
 body .App header .headWrap .links a.active {
   color: white;
+  pointer-events: none;
 }
 
 body .App header .headWrap .links a.active:after {
@@ -158,10 +182,11 @@ body .App header .headWrap .links a.active:after {
 }
 
 body .App header .headWrap .socLinks {
-  width: 135px;
+  width: 170px;
   position: absolute;
   top: 15px;
   right: 5px;
+  text-align: right;
 }
 
 body .App header .headWrap .socLinks svg {
@@ -183,7 +208,7 @@ body .App header .headWrap .socLinks a:hover svg {
 }
 
 body .App header .headWrap .darkWrap {
-  width: 135px;
+  width: 170px;
   position: absolute;
   top: 15px;
   left: 5px;
@@ -263,7 +288,7 @@ body .App header .headWrap .darkWrap.dark i.darkIcon svg {
 }
 
 body .App header .headWrap .darkWrap.dark i.lightIcon svg {
-  fill: rgba(255, 183, 197, 0.87);
+  fill: #ffb7c5;
 }
 
 body .App header .headWrap .darkWrap.dark:hover i.darkIcon svg {
@@ -287,7 +312,48 @@ body .App header .headWrap .darkWrap.dark .modeToggle .toggleInner .toggleCircle
 }
 
 body .App main {
-  padding-top: 180px;
+  padding-top: 220px;
+  max-width: 1024px;
+  width: 100%;
+  margin: auto;
+}
+
+body .App main .transition-group {
+  position: relative;
+}
+
+body .App main .fade-enter {
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+  opacity: 0.01;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: 0 auto;
+}
+
+body .App main .fade-enter.fade-enter-active {
+  opacity: 1;
+}
+
+body .App main .fade-exit {
+  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.4s ease;
+  transition: opacity 0.3s ease, -webkit-transform 0.4s ease;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+  transition: opacity 0.3s ease, transform 0.4s ease, -webkit-transform 0.4s ease;
+  opacity: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: 0 auto;
+}
+
+body .App main .fade-exit.fade-exit-active {
+  opacity: 0.01;
+  -webkit-transform: scale(0.1);
+          transform: scale(0.1);
 }
 
 body .App footer {
@@ -323,6 +389,16 @@ body.dark .textHighlight {
 
 body.dark .App {
   /*background: $dark-grey;*/
+}
+
+body.dark .App ::-moz-selection {
+  color: white;
+  background: #90ACCB;
+}
+
+body.dark .App ::selection {
+  color: white;
+  background: #90ACCB;
 }
 
 body.dark .App header .links {
@@ -374,40 +450,6 @@ body.dark .App footer .footNote .highlight {
 }
 
 body.dark .background svg {
-  stroke: rgba(255, 183, 197, 0.87);
-}
-
-.fade-enter {
-  opacity: 0.01;
-}
-
-.fade-enter.fade-enter-active {
-  opacity: 1;
-  -webkit-transition: opacity 300ms ease-in;
-  transition: opacity 300ms ease-in;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit.fade-exit-active {
-  opacity: 0.01;
-  -webkit-transition: opacity 300ms ease-in;
-  transition: opacity 300ms ease-in;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.transition-group {
-  position: relative;
+  stroke: #ffb7c5;
 }
 /*# sourceMappingURL=index.css.map */
