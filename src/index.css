@@ -18,6 +18,7 @@ body {
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
+  overflow-x: hidden;
   /*font-family: 'Noto Serif', serif;npm*/
 }
 
@@ -71,7 +72,7 @@ body .App .background {
 
 body .App .background .hishi {
   position: absolute;
-  max-width: 500px;
+  max-width: 400px;
   width: 40%;
   pointer-events: none;
   left: 0;
@@ -312,7 +313,7 @@ body .App header .headWrap .darkWrap.dark .modeToggle .toggleInner .toggleCircle
 }
 
 body .App main {
-  padding-top: 220px;
+  padding-top: 200px;
   max-width: 1024px;
   width: 100%;
   margin: auto;
@@ -322,38 +323,106 @@ body .App main .transition-group {
   position: relative;
 }
 
-body .App main .fade-enter {
-  -webkit-transition: all 0.6s ease;
-  transition: all 0.6s ease;
+body .App main .left-enter-done, body .App main .right-enter-done {
+  left: 0;
+  right: 0;
+  top: 0;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+body .App main .right-enter {
+  -webkit-transition: opacity 0.1s ease, -webkit-transform 0.4s ease;
+  transition: opacity 0.1s ease, -webkit-transform 0.4s ease;
+  transition: opacity 0.1s ease, transform 0.4s ease;
+  transition: opacity 0.1s ease, transform 0.4s ease, -webkit-transform 0.4s ease;
   opacity: 0.01;
   position: absolute;
   left: 0;
+  -webkit-transform: translateX(-40vw);
+          transform: translateX(-40vw);
   right: 0;
   top: 0;
   margin: 0 auto;
 }
 
-body .App main .fade-enter.fade-enter-active {
+body .App main .right-enter.right-enter-active {
   opacity: 1;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
-body .App main .fade-exit {
-  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.4s ease;
-  transition: opacity 0.3s ease, -webkit-transform 0.4s ease;
-  transition: opacity 0.3s ease, transform 0.4s ease;
-  transition: opacity 0.3s ease, transform 0.4s ease, -webkit-transform 0.4s ease;
+body .App main .right-exit {
+  -webkit-transition: opacity 0.2s ease, -webkit-transform 0.4s ease;
+  transition: opacity 0.2s ease, -webkit-transform 0.4s ease;
+  transition: opacity 0.2s ease, transform 0.4s ease;
+  transition: opacity 0.2s ease, transform 0.4s ease, -webkit-transform 0.4s ease;
   opacity: 1;
   position: absolute;
   left: 0;
+  -webkit-transform: translateX(0vw);
+          transform: translateX(0vw);
   right: 0;
   top: 0;
   margin: 0 auto;
 }
 
-body .App main .fade-exit.fade-exit-active {
+body .App main .right-exit.right-exit-active {
   opacity: 0.01;
-  -webkit-transform: scale(0.1);
-          transform: scale(0.1);
+  -webkit-transform: translateX(40vw);
+          transform: translateX(40vw);
+}
+
+body .App main .left-enter {
+  -webkit-transition: opacity 0.1s ease, -webkit-transform 0.4s ease;
+  transition: opacity 0.1s ease, -webkit-transform 0.4s ease;
+  transition: opacity 0.1s ease, transform 0.4s ease;
+  transition: opacity 0.1s ease, transform 0.4s ease, -webkit-transform 0.4s ease;
+  opacity: 0.01;
+  position: absolute;
+  left: 0;
+  -webkit-transform: translateX(40vw);
+          transform: translateX(40vw);
+  right: 0;
+  top: 0;
+  margin: 0 auto;
+}
+
+body .App main .left-enter.left-enter-active {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+body .App main .left-exit {
+  -webkit-transition: opacity 0.2s ease, -webkit-transform 0.4s ease;
+  transition: opacity 0.2s ease, -webkit-transform 0.4s ease;
+  transition: opacity 0.2s ease, transform 0.4s ease;
+  transition: opacity 0.2s ease, transform 0.4s ease, -webkit-transform 0.4s ease;
+  opacity: 1;
+  position: absolute;
+  left: 0;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  right: 0;
+  top: 0;
+  margin: 0 auto;
+}
+
+body .App main .left-exit.left-exit-active {
+  opacity: 0.01;
+  -webkit-transform: translateX(-40vw);
+          transform: translateX(-40vw);
+}
+
+body .App main .right-enter.right-enter-active + .left-exit.left-exit-active {
+  -webkit-transform: translateX(40vw);
+          transform: translateX(40vw);
+}
+
+body .App main .left-enter.left-enter-active + .right-exit.right-exit-active {
+  -webkit-transform: translateX(-40vw);
+          transform: translateX(-40vw);
 }
 
 body .App footer {

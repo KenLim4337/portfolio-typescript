@@ -4,9 +4,8 @@ export default function About() {
     return (
         <React.Fragment>
             <div className="wrapper">
-                <h1>About Me</h1>
                 <article>
-                    <h2>Hello there, my name is <span className="textHighlight">Jude</span></h2>
+                    <h1>Hello there, my name is <span className="textHighlight">Jude</span></h1>
 
                     <p>
                         That's the way I look when I get home late; black and blue. This is a fantastic little painting. Just let your mind wander and enjoy. This should make you happy.

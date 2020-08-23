@@ -26,6 +26,7 @@ body {
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
+  overflow-x: hidden;
   /*font-family: 'Noto Serif', serif;npm*/
 
   a {
@@ -75,7 +76,7 @@ body {
   
       .hishi {
         position: absolute;
-        max-width: 500px;
+        max-width: 400px;
         width: 40%;
         pointer-events: none;
         left: 0;
@@ -315,7 +316,7 @@ body {
     }
 
     main {
-      padding-top: 220px;
+      padding-top: 200px;
       max-width: 1024px;
       width: 100%;
       margin: auto;
@@ -324,31 +325,84 @@ body {
         position: relative;
       }
 
-      .fade-enter {
-        transition: all 0.6s ease;
+      .left-enter-done, .right-enter-done {
+        left: 0;
+        right:0;
+        top: 0;
+        transform: translateX(0);
+      }
+
+      .right-enter {
+        transition: opacity 0.1s ease, transform 0.4s ease;
         opacity: 0.01;
         position: absolute;
         left: 0;
-        right: 0;
+        transform: translateX(-40vw);
+        right:0;
         top: 0;
         margin: 0 auto;
       }
-      .fade-enter.fade-enter-active {
+
+      .right-enter.right-enter-active {
         opacity: 1;
+        transform: translateX(0);
       }
-      .fade-exit {
-        transition: opacity 0.3s ease, transform 0.4s ease;
+
+      .right-exit {
+        transition: opacity 0.2s ease, transform 0.4s ease;
         opacity: 1;
         position: absolute;
         left: 0;
+        transform: translateX(0vw);
         right: 0;
         top: 0;
         margin: 0 auto;
       }
         
-      .fade-exit.fade-exit-active {
+      .right-exit.right-exit-active {
         opacity: 0.01;
-        transform: scale(0.1);
+        transform: translateX(40vw);
+      }
+
+
+      .left-enter {
+        transition: opacity 0.1s ease, transform 0.4s ease;
+        opacity: 0.01;
+        position: absolute;
+        left: 0;
+        transform: translateX(40vw);
+        right:0;
+        top: 0;
+        margin: 0 auto;
+      }
+
+      .left-enter.left-enter-active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .left-exit {
+        transition: opacity 0.2s ease, transform 0.4s ease;
+        opacity: 1;
+        position: absolute;
+        left: 0;
+        transform: translateX(0);
+        right: 0;
+        top: 0;
+        margin: 0 auto;
+      }
+        
+      .left-exit.left-exit-active {
+        opacity: 0.01;
+        transform: translateX(-40vw);
+      }
+  
+      .right-enter.right-enter-active + .left-exit.left-exit-active  {
+        transform: translateX(40vw);
+      }
+      
+      .left-enter.left-enter-active + .right-exit.right-exit-active  {
+        transform: translateX(-40vw);
       }
     }
 

@@ -10,6 +10,7 @@ import Background from './components/layout/Background';
 
 interface IState {
   dark:Boolean;
+  page:Number
 }
 
 class App extends Component<any,IState> {
@@ -17,7 +18,8 @@ class App extends Component<any,IState> {
     super(props);
 
     this.state = {
-      dark: false
+      dark: false,
+      page: 0,
     };
   }
 
@@ -42,12 +44,16 @@ class App extends Component<any,IState> {
     let darkOffset:number = this.state.dark? -100 : 0;
     
     //Page offset
-    darkOffset += ((1 + Array.prototype.indexOf.call(document.querySelectorAll('header .links a'),document.querySelector('header .links a.active'))) * 30);
+    darkOffset += ((1 + Array.prototype.indexOf.call(document.querySelectorAll('header .links a'),document.querySelector('header .links a.active'))) * 40);
 
     document.querySelectorAll('body .background svg').forEach((el) => {
       el.setAttribute('style','stroke-dashoffset:'+darkOffset);
     });
   }
+
+  updatePage = (pageIndex):void => {
+    this.setState({page: pageIndex});
+  } 
 
   componentDidMount() {
     this.applyDark();
@@ -59,7 +65,7 @@ class App extends Component<any,IState> {
         <div className="App">
           <div className="container">
             <Header toggleDark={this.toggleDark} darkState={this.state.dark}/>
-            <Main setOffSet={this.setOffset}/>
+            <Main setOffSet={this.setOffset} page={this.state.page} updatePage={this.updatePage}/>
             <Footer />
             <Background />
           </div>
